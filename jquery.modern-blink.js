@@ -86,7 +86,7 @@
 				'animation-iteration-count': '' + this.options.iterationCount
 			});
 		} else {
-			this._fallbackAnimation();
+			this._fallbackAnimation( this.options.iterationCount );
 		}
 	};
 
@@ -105,8 +105,18 @@
 		return this.el.stop( true, true );
 	};
 
-	ModernBlink.prototype._fallbackAnimation = function _fallbackAnimation() {
-		console.log('Will implement this later :)');
+	ModernBlink.prototype._fallbackAnimation = function _fallbackAnimation( iterationCount ) {
+		var self = this,
+			duration = this.options.duration / 2;
+
+		if ( iterationCount > 0 || iterationCount === 'infinite' ) {
+			iterationCount = iterationCount === "infinite" ? "infinite" : iterationCount - 1;
+
+			this.el.animate({ 'opacity': 0 }, duration).promise().done(function() {
+				self.el.animate({ 'opacity': 1 }, duration);
+				self._fallbackAnimation( iterationCount );
+			});
+		}
 	};
 
 	/*

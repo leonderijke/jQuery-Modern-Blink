@@ -41,7 +41,7 @@ $(element).modernBlink({
 	iterationCount: "infinite",
 
 	// Whether to start automatically or not (boolean)
-	start: true
+	auto: true
 });
 ```
 

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head></head>
+	<body>
+
+		<h1 class="js-blink-infinite">I blink infinitely</h1>
+		<h1 class="js-blink-5">I blink only 5 times</h1>
+		<h1 class="js-blink-furiously">I blink furiously</h1>
+
+		<script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+		<script src="jquery.modern-blink.js"></script>
+		<script>
+			jQuery(function($) {
+				$('.js-blink-infinite').modernBlink();
+				$('.js-blink-5').modernBlink({
+					iterationCount: 5
+				});
+				$('.js-blink-furiously').modernBlink({
+					duration: '300'
+				});
+			});
+		</script>
+	</body>
+</html>

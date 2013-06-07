@@ -20,6 +20,8 @@ Use Modern Blink like this on the desired elements:
 $('.js-blink').modernBlink();
 ```
 
+### Options
+
 The following options can be passed to Modern Blink (defaults are shown):
 
 ```js
@@ -34,6 +36,12 @@ The following options can be passed to Modern Blink (defaults are shown):
 	start: true
 });
 ```
+### Events
+
+Modern Blink will attach the following event listeners to the element:
+
+- **modernBlink.start**: will start the animation
+- **modernBlink.stop**: will stop the animation
 
 ## Browser Support
 

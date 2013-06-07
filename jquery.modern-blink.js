@@ -72,6 +72,8 @@
 		if ( this.options.auto ) {
 			this.start();
 		}
+
+		this._bindEventHandlers();
 	};
 
 	/*
@@ -121,6 +123,15 @@
 				self._fallbackAnimation( iterationCount );
 			});
 		}
+	};
+
+	/*
+	 * @function _bindEventHandlers
+	 * Binds some useful event handlers to the element
+	 */
+	ModernBlink.prototype._bindEventHandlers = function _bindEventHandlers() {
+		this.el.on( 'modernBlink.start', $.proxy( this.start, this ) );
+		this.el.on( 'modernBlink.stop', $.proxy( this.stop, this ) );
 	};
 
 	/*

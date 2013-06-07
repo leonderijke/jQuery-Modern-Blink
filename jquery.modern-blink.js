@@ -61,14 +61,14 @@
 
 		this.options = $.extend( {}, defaults, options );
 
-		this.init();
+		this._init();
 	}
 
 	/*
-	 * @function init
+	 * @function _init
 	 * Wraps the element, starts the animation
 	 */
-	ModernBlink.prototype.init = function init() {
+	ModernBlink.prototype._init = function _init() {
 		if ( this.options.start ) {
 			this.start();
 		}

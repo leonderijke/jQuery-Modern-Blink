@@ -4,6 +4,8 @@ jQuery plugin utilizing CSS Animations. Because we all loved the &lt;blink&gt; t
 
 Modern Blink will use CSS Animations in browsers supporting them and fallback to jQuery Animations in older browsers.
 
+**Demo**: http://codepen.io/leonderijke/pen/bkgxi
+
 ## Installation
 
 Include Modern Blink after the jQuery library:

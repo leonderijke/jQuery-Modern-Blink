@@ -25,7 +25,7 @@ $('.js-blink').modernBlink();
 The following options can be passed to Modern Blink (defaults are shown):
 
 ```js
-.modernBlink({
+$(element).modernBlink({
 	// Duration specified in milliseconds (integer)
 	duration: 1000,
 
@@ -36,12 +36,24 @@ The following options can be passed to Modern Blink (defaults are shown):
 	start: true
 });
 ```
+
+### Methods
+
+Modern Blink provides the following public methods:
+
+```js
+$(element).modernBlink('start'); // Will start the animation
+$(element).modernBlink('stop'); // Will stop the animation
+```
+
 ### Events
 
 Modern Blink will attach the following event listeners to the element:
 
-- **modernBlink.start**: will start the animation
-- **modernBlink.stop**: will stop the animation
+```js
+$(element).trigger('modernBlink.start'); // Will start the animation
+$(element).trigger('modernBlink.stop'); // Will stop the animation
+```
 
 ## Browser Support
 

@@ -12,6 +12,12 @@ Include Modern Blink after the jQuery library:
 <script src="/path/to/jquery.modern-blink.js"></script>
 ```
 
+Or, install via Bower:
+
+```
+bower install modern-blink
+```
+
 ## Usage
 
 Use Modern Blink like this on the desired elements:

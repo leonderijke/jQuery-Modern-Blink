@@ -129,6 +129,11 @@
 		return this.each( function () {
 			if (!$.data( this, "plugin_modernBlink" ) ) {
 				$.data( this, "plugin_modernBlink", new ModernBlink( this, options ) );
+			} else {
+				options = options.replace( /^_/ , "" );
+				if ( $.isFunction( ModernBlink.prototype[options] ) ) {
+					$.data( this, 'plugin_modernBlink' )[options]();
+				}
 			}
 		});
 	};

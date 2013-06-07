@@ -12,14 +12,6 @@ Include Modern Blink after the jQuery library:
 <script src="/path/to/jquery.modern-blink.js"></script>
 ```
 
-## Browser Compatibility
-
-Tested in:
-* IE8+
-* Chrome
-* Safari
-* Firefox
-
 ## Usage
 
 Use Modern Blink like this on the desired elements:
@@ -42,3 +34,15 @@ The following options can be passed to Modern Blink (defaults are shown):
 	start: true
 });
 ```
+
+## Browser Support
+
+Tested in:
+* Chrome
+* Safari
+* Firefox
+* Internet Explorer 8+
+
+## License
+
+MIT License

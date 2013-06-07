@@ -23,7 +23,7 @@
 			iterationCount: "infinite",
 
 			// Whether to start automatically or not (boolean)
-			start:          true
+			auto:          true
 		},
 		animationCss;
 
@@ -69,13 +69,13 @@
 	 * Wraps the element, starts the animation
 	 */
 	ModernBlink.prototype._init = function _init() {
-		if ( this.options.start ) {
+		if ( this.options.auto ) {
 			this.start();
 		}
 	};
 
 	/*
-	 * @function _start
+	 * @function start
 	 * Starts the animation
 	 */
 	ModernBlink.prototype.start = function start( event ) {
@@ -91,10 +91,10 @@
 	};
 
 	/*
-	 * @function _stop
+	 * @function stop
 	 * Stops the animation
 	 */
-	ModernBlink.prototype.stop = function stop() {
+	ModernBlink.prototype.stop = function stop( event ) {
 		if ( supportsAnimations ) {
 			return this.el.css({
 				'animation-name'            : '',
@@ -105,6 +105,10 @@
 		return this.el.stop( true, true );
 	};
 
+	/*
+	 * @function _fallbackAnimation
+	 * Provides a jQuery Animation fallback for browsers not supporting CSS Animations
+	 */
 	ModernBlink.prototype._fallbackAnimation = function _fallbackAnimation( iterationCount ) {
 		var self = this,
 			duration = this.options.duration / 2;

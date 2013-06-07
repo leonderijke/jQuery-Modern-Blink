@@ -69,7 +69,9 @@ Tested in:
 * Chrome
 * Safari
 * Firefox
-* Internet Explorer 8+
+* Mobile Safari 5.1+
+* Android browser 4.0+
+* Internet Explorer 6+
 
 ## License
 

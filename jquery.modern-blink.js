@@ -47,13 +47,24 @@
 						'50% { opacity: 0; }'+
 					'}';
 
-		if( document.styleSheets && document.styleSheets.length ) {
-			document.styleSheets[0].insertRule( keyframes, 0 );
-		} else {
-			var s = document.createElement( 'style' );
-			s.innerHTML = keyframes;
-			document.getElementsByTagName( 'head' )[ 0 ].appendChild( s );
+		var styleSheet = null;
+		if (document.styleSheets && document.styleSheets.length) {
+			for (var i = 0; i < document.styleSheets.length; ++i) {
+				if (document.styleSheets[i].href.indexOf(window.location.hostname) == -1)
+					continue;
+
+				styleSheet = document.styleSheets[i];
+				break;
+			}
 		}
+
+		if (styleSheet != null)
+			styleSheet.insertRule(keyframes, 0);
+		else {
+			var s = document.createElement('style');
+			s.innerHTML = keyframes;
+			document.getElementsByTagName('head')[0].appendChild(s);
+		}					
 	}
 
 	function ModernBlink( element, options ) {

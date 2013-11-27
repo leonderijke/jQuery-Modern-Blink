@@ -25,14 +25,15 @@
 			// Whether to start automatically or not (boolean)
 			auto:          true
 		},
-		animationCss;
+		animationCss,
+		i;
 
 	if( document.documentElement.style.animationName ) {
 		supportsAnimations = true;
 	}
 
 	if ( !supportsAnimations ) {
-		for( var i = 0; i < domPrefixes.length; i++ ) {
+		for( i = 0; i < domPrefixes.length; i++ ) {
 			if( document.documentElement.style[ domPrefixes[ i ] + 'AnimationName' ] !== undefined ) {
 				prefix = domPrefixes[ i ];
 				keyframeprefix = '-' + prefix.toLowerCase() + '-';
@@ -49,7 +50,7 @@
 
 		var styleSheet = null;
 		if ( document.styleSheets && document.styleSheets.length ) {
-			for ( var i = 0; i < document.styleSheets.length; i++ ) {
+			for ( i = 0; i < document.styleSheets.length; i++ ) {
 				if ( document.styleSheets[ i ].href.indexOf( window.location.hostname ) == -1) {
 					continue;
 				}

@@ -2,7 +2,7 @@
  * jQuery Modern Blink plugin
  * https://github.com/leonderijke/Modern-Blink
  *
- * Version: 0.1.1
+ * Version: 0.1.2
  * Author: @leonderijke
  * Licensed under the MIT license
  */

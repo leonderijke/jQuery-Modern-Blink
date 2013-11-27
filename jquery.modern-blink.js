@@ -10,7 +10,7 @@
 ;(function ( $, window, document, undefined ) {
 	"use strict";
 
-	var domPrefixes = 'Webkit Moz O ms'.split(' '),
+	var domPrefixes = 'Webkit Moz O ms'.split( ' ' ),
 		prefix = '',
 		supportsAnimations = false,
 		keyframeprefix = '',
@@ -33,7 +33,7 @@
 
 	if ( !supportsAnimations ) {
 		for( var i = 0; i < domPrefixes.length; i++ ) {
-			if( document.documentElement.style[ domPrefixes[i] + 'AnimationName' ] !== undefined ) {
+			if( document.documentElement.style[ domPrefixes[ i ] + 'AnimationName' ] !== undefined ) {
 				prefix = domPrefixes[ i ];
 				keyframeprefix = '-' + prefix.toLowerCase() + '-';
 				supportsAnimations = true;
@@ -47,13 +47,26 @@
 						'50% { opacity: 0; }'+
 					'}';
 
-		if( document.styleSheets && document.styleSheets.length ) {
-			document.styleSheets[0].insertRule( keyframes, 0 );
-		} else {
+		var styleSheet = null;
+		if ( document.styleSheets && document.styleSheets.length ) {
+			for ( var i = 0; i < document.styleSheets.length; ++i ) {
+				if ( document.styleSheets[ i ].href.indexOf( window.location.hostname ) == -1) {
+					continue;
+				}
+
+				styleSheet = document.styleSheets[ i ];
+				break;
+			}
+		}
+
+		if ( styleSheet != null ) {
+			styleSheet.insertRule( keyframes, 0 );
+		}
+		else {
 			var s = document.createElement( 'style' );
 			s.innerHTML = keyframes;
 			document.getElementsByTagName( 'head' )[ 0 ].appendChild( s );
-		}
+		}					
 	}
 
 	function ModernBlink( element, options ) {
@@ -118,8 +131,8 @@
 		if ( iterationCount > 0 || iterationCount === 'infinite' ) {
 			iterationCount = iterationCount === "infinite" ? "infinite" : iterationCount - 1;
 
-			this.el.animate({ 'opacity': 0 }, duration).promise().done(function() {
-				self.el.animate({ 'opacity': 1 }, duration);
+			this.el.animate( { 'opacity': 0 }, duration ).promise().done( function() {
+				self.el.animate( { 'opacity': 1 }, duration );
 				self._fallbackAnimation( iterationCount );
 			});
 		}
@@ -142,12 +155,12 @@
 	 */
 	$.fn.modernBlink = function ( options ) {
 		return this.each( function () {
-			if (!$.data( this, "plugin_modernBlink" ) ) {
+			if ( !$.data( this, "plugin_modernBlink" ) ) {
 				$.data( this, "plugin_modernBlink", new ModernBlink( this, options ) );
 			} else {
-				options = options.replace( /^_/ , "" );
-				if ( $.isFunction( ModernBlink.prototype[options] ) ) {
-					$.data( this, 'plugin_modernBlink' )[options]();
+				options = ( options || "" ).replace( /^_/ , "" );
+				if ( $.isFunction( ModernBlink.prototype[ options ] ) ) {
+					$.data( this, 'plugin_modernBlink' )[ options ]();
 				}
 			}
 		});

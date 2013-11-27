@@ -49,7 +49,7 @@
 
 		var styleSheet = null;
 		if ( document.styleSheets && document.styleSheets.length ) {
-			for ( var i = 0; i < document.styleSheets.length; ++i ) {
+			for ( var i = 0; i < document.styleSheets.length; i++ ) {
 				if ( document.styleSheets[ i ].href.indexOf( window.location.hostname ) == -1) {
 					continue;
 				}
@@ -59,14 +59,14 @@
 			}
 		}
 
-		if ( styleSheet != null ) {
+		if ( styleSheet !== null ) {
 			styleSheet.insertRule( keyframes, 0 );
 		}
 		else {
 			var s = document.createElement( 'style' );
 			s.innerHTML = keyframes;
 			document.getElementsByTagName( 'head' )[ 0 ].appendChild( s );
-		}					
+		}
 	}
 
 	function ModernBlink( element, options ) {

@@ -1,6 +1,6 @@
 /*!
  * jQuery Modern Blink plugin
- * https://github.com/leonderijke/Modern-Blink
+ * https://github.com/leonderijke/jQuery-Modern-Blink
  *
  * Version: 0.1.2
  * Author: @leonderijke

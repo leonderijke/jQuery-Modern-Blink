@@ -61,7 +61,7 @@
 		}
 
 		if ( styleSheet !== null ) {
-			styleSheet.insertRule( keyframes, 0 );
+			styleSheet.insertRule( keyframes, styleSheet.cssRules.length );
 		}
 		else {
 			var s = document.createElement( 'style' );
@@ -96,11 +96,11 @@
 	 */
 	ModernBlink.prototype.start = function start( event ) {
 		if ( supportsAnimations ) {
-			this.el.css({
-				'animation-name':            'modernBlink',
-				'animation-duration':        '' + this.options.duration + 'ms',
-				'animation-iteration-count': '' + this.options.iterationCount
-			});
+			var style = {};
+			style[keyframeprefix + 'animation-name'] =            'modernBlink';
+			style[keyframeprefix + 'animation-duration'] =        '' + this.options.duration + 'ms';
+			style[keyframeprefix + 'animation-iteration-count'] = '' + this.options.iterationCount;
+			this.el.css(style);
 		} else {
 			this._fallbackAnimation( this.options.iterationCount );
 		}
@@ -112,11 +112,11 @@
 	 */
 	ModernBlink.prototype.stop = function stop( event ) {
 		if ( supportsAnimations ) {
-			return this.el.css({
-				'animation-name'            : '',
-				'animation-duration'        : '',
-				'animation-iteration-count' : ''
-			});
+			var style = {};
+			style[keyframeprefix + 'animation-name'] =            '';
+			style[keyframeprefix + 'animation-duration'] =        '';
+			style[keyframeprefix + 'animation-iteration-count'] = '';
+			return this.el.css(style);
 		}
 		return this.el.stop( true, true );
 	};
